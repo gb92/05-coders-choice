@@ -1,0 +1,9 @@
+<div class="row">
+    <section class="col-sm-8" >
+        <%= form_for(@conn, item_path(@conn, :create), [as: :item], fn form -> %>
+        <%= text_input form, :name %>
+        <%= textarea form, :description %>
+        <%= submit "Add Item" %>
+        <% end) %>
+    </section>
+</div>

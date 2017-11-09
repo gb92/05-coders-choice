@@ -10,6 +10,7 @@
       <%= for [ id, name ] <- @items do %>
         <li><%= link(name, to: item_path(@conn, :show, id)) %></li>
       <% end %>
+        <%= link("Add Item", to: item_path(@conn, :item_form)) %>
     </ul>
   </div>
 
