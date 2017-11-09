@@ -8,7 +8,7 @@
     <h4>Items</h4>
     <ul>
       <%= for [ id, name ] <- @items do %>
-        <li><%= link(name, to: page_path(@conn, :show, id)) %></li>
+        <li><%= link(name, to: item_path(@conn, :show, id)) %></li>
       <% end %>
     </ul>
   </div>

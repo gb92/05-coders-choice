@@ -1,0 +1,12 @@
+<div class="row">
+    <section class="col-sm-8">
+        <article class="panel panel-success">
+            <header class="panel-heading">
+                <h3><%= @item.name %></h3>
+            </header>
+            <div class="panel-body">
+                <%= @item.description%>
+            </div>
+        </article>
+    </section>
+</div>

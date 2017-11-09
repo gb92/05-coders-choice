@@ -21,8 +21,9 @@ defmodule JunkmanagerWeb.Router do
 
   scope "/item", JunkmanagerWeb do
     pipe_through :browser
-
-    get "/:id", PageController, :show
+    
+    post "/",    ItemController, :create
+    get  "/:id", ItemController, :show
   end
   # Other scopes may use custom stacks.
   # scope "/api", JunkmanagerWeb do
