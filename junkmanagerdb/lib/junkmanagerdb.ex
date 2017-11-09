@@ -1,18 +1,9 @@
 defmodule Junkmanagerdb do
-  @moduledoc """
-  Documentation for Junkmanagerdb.
-  """
+  alias Junkmanagerdb.Impl
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Junkmanagerdb.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  defdelegate add(name, description, purchase_price), to: Impl
+  defdelegate add(name, description), to: Impl
+  defdelegate list_item_names(), to: Impl
+  defdelegate find_item(id), to: Impl
+  defdelegate update_item(id, updates), to: Impl
 end

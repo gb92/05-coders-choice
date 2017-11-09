@@ -6,14 +6,13 @@ defmodule Junkmanagerdb.Application do
   use Application
 
   def start(_type, _args) do
+    import Supervisor.Spec
+
     # List all child processes to be supervised
     children = [
-      # Starts a worker by calling: Junkmanagerdb.Worker.start_link(arg)
-      # {Junkmanagerdb.Worker, arg},
+      worker(Junkmanagerdb.Repo, [])
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Junkmanagerdb.Supervisor]
     Supervisor.start_link(children, opts)
   end
