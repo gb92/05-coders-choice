@@ -1,13 +1,15 @@
 defmodule Junkmanagerdb.Impl do
+  alias Junkmanagerdb.User
   alias Junkmanagerdb.ItemsSchema
   alias Junkmanagerdb.Repo
+  alias Doorman.Auth.Secret
 
   import Ecto.Query
 
   def add(name, description) do
     %ItemsSchema{}
     |> ItemsSchema.changeset(%{name: name, description: description})
-    |> Junkmanagerdb.Repo.insert!
+    |> Repo.insert!
   end
 
   def add(name, description, purchase_price) do
@@ -32,5 +34,12 @@ defmodule Junkmanagerdb.Impl do
     find_item(id)
     |> ItemsSchema.changeset(updates)
     |> Repo.update!
+  end
+
+  def add_user(username, email, password) do
+    %User{}
+    |> User.changeset(%{username: username, email: email, password: password})
+    |> Secret.put_session_secret()
+    |> Repo.insert
   end
 end

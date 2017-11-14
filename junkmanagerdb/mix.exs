@@ -23,7 +23,8 @@ defmodule Junkmanagerdb.Mixfile do
   defp deps do
     [
       { :postgrex, ">= 0.0.0"},
-      { :ecto, ">=0.0.0"}
+      { :ecto, ">=0.0.0"},
+      {:doorman, path: "../doorman/"}
     ]
   end
 end

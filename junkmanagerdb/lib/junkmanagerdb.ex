@@ -6,4 +6,5 @@ defmodule Junkmanagerdb do
   defdelegate list_item_names(), to: Impl
   defdelegate find_item(id), to: Impl
   defdelegate update_item(id, updates), to: Impl
+  defdelegate add_user(username, email, password), to: Impl
 end

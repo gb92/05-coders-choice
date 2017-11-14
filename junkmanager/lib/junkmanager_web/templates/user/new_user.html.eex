@@ -1,0 +1,31 @@
+<div class="row">
+    <section class="col-sm-8" >
+        <%= form_for(@conn, user_path(@conn, :create), [as: :user], fn form -> %>
+        <%= if @errors != [] do %>
+            <div class="alert alert-danger"> 
+                <p>There was an issue creating the account</p>
+            </div>
+        <% end %>
+
+        <div class="form-group">
+            <label>Username</label>
+            <%= text_input form, :username%>
+            <%= error_tag form, :username%>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <%= email_input form, :email%>
+            <%= error_tag form, :email%>
+        </div>
+        
+        <div class="form-group">
+            <label>Password</label>
+            <%= password_input form, :password%>
+            <%= error_tag form, :password%>
+        </div>
+        <div class="form-group">
+            <%= submit "Create User", class: "btn btn-primary" %>
+        </div>
+        <% end) %>
+    </section>
+</div>

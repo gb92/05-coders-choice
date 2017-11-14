@@ -1,3 +1,4 @@
-# Coder's Choice
+# Junkmanager - The Inventory Manager for Thrift Stire/Garage Sale Resellers
 
-See the assignment on Canvas for details
+#get the code
+git clone --recursive 
