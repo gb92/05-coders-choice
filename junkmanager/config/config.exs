@@ -18,6 +18,12 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+#configure Doorman authentication
+config :doorman,
+  repo: Junkmanagerdb.Repo,
+  secure_with: Doorman.Auth.Bcrypt,
+  user_module: Junkmanagerdb.User
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

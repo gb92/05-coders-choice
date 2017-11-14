@@ -5,7 +5,10 @@
     "command": "mix",
     "tasks": [
         {
-            "taskName": "compile",
+            "label": "compile",
+            "args": [
+                "compile"
+            ],
             "type": "shell",
             "presentation": {
                 "echo": true,
@@ -23,7 +26,10 @@
             }
         },
         {
-            "taskName":"test",
+            "label":"test",
+            "args": [
+                "test"
+            ],
             "type": "shell",
             "presentation": {
                 "echo": true,
@@ -42,7 +48,10 @@
             }
         },
         {
-            "taskName":"phx.server",
+            "label":"phx.server",
+            "args": [
+                "phx.server"
+            ],
             "type": "shell",
             "presentation": {
                 "echo": true,
@@ -54,10 +63,7 @@
                 "$mixCompileError",
                 "$mixCompileWarning"
             ],
-            "group": {
-                "kind": "none",
-                "isDefault": true
-            }
+            "group": "none"
         }
     ]
 }
