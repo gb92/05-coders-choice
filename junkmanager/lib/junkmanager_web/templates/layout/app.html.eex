@@ -12,14 +12,15 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
+        <nav role="navigation" class = "nav navbar-inverted">
+          <a class="navbar-brand">Junkmanager</>
+          <%= if(Doorman.logged_in?(@conn)) do %>
+            <%  user = Doorman.Login.Session.get_current_user(@conn) %>
+            <p class="navbar-text">Welcome, <%= user.username %></p> 
+        <% end %>
         </nav>
-        <span class="logo"></span>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

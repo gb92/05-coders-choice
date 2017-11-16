@@ -42,4 +42,9 @@ defmodule Junkmanagerdb.Impl do
     |> Secret.put_session_secret()
     |> Repo.insert
   end
+
+  def auth_user(email, password) do
+   Doorman.authenticate(email, password)
+  end
+  
 end

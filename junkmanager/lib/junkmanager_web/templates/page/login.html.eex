@@ -1,0 +1,20 @@
+<div class="row">
+    <section class="col-sm-8" >
+        <%= form_for(@conn, page_path(@conn, :create), [as: :user], fn form -> %>
+
+        <div class="form-group">
+            <label for: >Email</label>
+            <%= email_input form, :email%>
+            <%= error_tag form, :email%>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <%= password_input form, :password%>
+            <%= error_tag form, :password%>
+        </div>
+        <div class="form-group">
+            <%= submit "Login", class: "btn btn-primary" %>
+        </div>
+        <% end) %>
+    </section>
+</div>

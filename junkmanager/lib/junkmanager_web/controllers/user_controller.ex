@@ -9,7 +9,6 @@ defmodule JunkmanagerWeb.UserController do
 
    def create(conn, %{"user"=> %{"username" => username, "email" => email, "password" => password}}) do
     result = Junkmanagerdb.add_user(username, email, password)
-    IO.inspect result
     case result do 
       {:ok, changeset} -> 
          conn
@@ -17,16 +16,13 @@ defmodule JunkmanagerWeb.UserController do
         |> redirect(to: page_path(conn, :index))
       {:error, %{errors: [password: _ ]}} ->
         conn
-        |> put_flash(:info, "Password needs to be at least 8 characters")
-        |> render("new_user.html", errors: ["Password Length"])
+        |> handle_create_user_error("Password needs to be at least 8 characters")
       {:error, %{errors: [username: error]}} ->
         conn
-        |> put_flash(:info, "Username already used")
-        |> render("new_user.html", errors: error)
+        |> handle_create_user_error( "Username already used")
        {:error, %{errors: [email: error]}} ->
          conn
-         |> put_flash(:info, "Email already used")
-         |> render("new_user.html", errors: error)
+         |> handle_create_user_error("Email already used")
     end
   end
 
@@ -40,5 +36,11 @@ defmodule JunkmanagerWeb.UserController do
     # TODO: implement page to update user details
     conn 
     |> redirect(to: page_path(conn, :index))
+  end
+
+  def  handle_create_user_error(conn, error_message) do
+    conn
+    |> put_flash(:error, error_message)
+    |> render("new_user.html", errors: [])
   end
 end
