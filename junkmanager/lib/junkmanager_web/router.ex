@@ -20,6 +20,7 @@ defmodule JunkmanagerWeb.Router do
     get "/", PageController, :index
     get "/login", PageController, :new
     post "/login", PageController, :create
+    get "/logout", PageController, :update
   end
 
   scope "/item", JunkmanagerWeb do

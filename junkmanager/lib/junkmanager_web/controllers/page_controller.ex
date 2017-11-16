@@ -10,11 +10,18 @@ defmodule JunkmanagerWeb.PageController do
     |> render ("login.html")
   end
 
-  def create(conn,  %{"user"=> %{ "email" => email, "password" => password}})do
+  def create(conn,  %{"user"=> %{ "email" => email, "password" => password}}) do
     user =Doorman.authenticate(email, password)
 
     conn 
     |> valid_user(user)
+  end
+
+  def update(conn, _params) do
+    conn
+    |> Doorman.Login.Session.logout()
+    |> put_flash(:info, "Successfully logged out")
+    |> redirect(to: page_path(conn, :index))
   end
 
   def valid_user(conn, user = %Junkmanagerdb.User{}) do
