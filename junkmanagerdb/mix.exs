@@ -24,7 +24,7 @@ defmodule Junkmanagerdb.Mixfile do
     [
       { :postgrex, ">= 0.0.0"},
       { :ecto, ">=0.0.0"},
-      {:doorman, path: "../doorman/"}
+      {:doorman, github: "BlakeWilliams/doorman"}
     ]
   end
 end
