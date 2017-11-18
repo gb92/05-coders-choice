@@ -1,17 +1,18 @@
 <div class="row">
+
     <section class="col-sm-4"></section>
-    <section class="col-sm-4" >
+    <section class="col-sm-4 border" >
 
         <%= form_for(@conn, page_path(@conn, :create), [as: :user], fn form -> %>
 
         <div class="form-group">
             <label for="user_email" >Email</label>
-            <%= email_input form, :email, class: "form-control"%>
+            <%= email_input form, :email, class: "form-control", placeholder: "your@email.com"%>
             <%= error_tag form, :email%>
         </div>
         <div class="form-group">
             <label for="user_password">Password</label>
-            <%= password_input form, :password, class: "form-control"%>
+            <%= password_input form, :password, class: "form-control", placeholder: "password"%>
             <%= error_tag form, :password%>
         </div>
         <div class="form-group">
