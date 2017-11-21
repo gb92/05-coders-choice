@@ -10,6 +10,7 @@ defmodule Junkmanagerdb.User do
     field :password, :string, virtual: true
     field :session_secret, :string
 
+    has_many :items, Junkmanagerdb.ItemsSchema
     timestamps()
   end
 

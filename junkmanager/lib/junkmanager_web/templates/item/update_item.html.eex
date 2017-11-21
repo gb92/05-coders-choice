@@ -1,0 +1,23 @@
+<div class="row">
+    <section class="col-sm-8" >
+        <%= form_for(@conn, item_path(@conn, :update_item, @item.id), [as: :item], fn form -> %>
+        <div class="form-group">
+            <label for="item_name"> Item Name: </label>
+            <%= text_input form, :name, class: "form-control", value: @item.name %>
+        </div>
+        <div class="form-group">        
+            <label for="item_description"> Item Description: </label>
+            <%= textarea form, :description, class: "form-control", value: @item.description %>
+        </div>
+        <div class="form-group">        
+            <label for="item_purchase_price"> Purchase Price: </label>
+            <%= number_input form, :purchase_price, class: "form-control", step: "any", value: @item.purchase_price%>
+        </div>
+        <div class="form-group">        
+            <label for="item_sale_price"> Purchase Price: </label>
+            <%= number_input form, :sale_price, class: "form-control", step: "any", value: @item.sale_price%>
+        </div>
+        <%= submit "Add Item", class: "btn btn-primary" %>
+        <% end) %>
+    </section>
+</div>

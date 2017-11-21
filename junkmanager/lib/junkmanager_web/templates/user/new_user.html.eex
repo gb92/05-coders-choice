@@ -1,5 +1,6 @@
 <div class="row">
-    <section class="col-sm-8" >
+    <section class="col-sm-4"></section>
+    <section class="col-sm-4 border" >
         <%= form_for(@conn, user_path(@conn, :create), [as: :user], fn form -> %>
         <%= if @errors != [] do %>
             <div class="alert alert-danger"> 
@@ -28,4 +29,5 @@
         </div>
         <% end) %>
     </section>
+    <section class="col-sm-4"></section>
 </div>

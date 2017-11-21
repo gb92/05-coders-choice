@@ -7,7 +7,7 @@ defmodule Junkmanagerdb.Repo.Migrations.Items do
         add :description, :string
         add :purchase_price, :float
         add :sale_price, :float
-        add :user, references(:users)
+        add :user_id, references(:users)
   
         timestamps()
     end

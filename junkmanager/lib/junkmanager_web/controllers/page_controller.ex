@@ -2,6 +2,7 @@ defmodule JunkmanagerWeb.PageController do
   use JunkmanagerWeb, :controller
 
   def index(conn, _params) do
+    # %{id: user_id} = Doorman.Login.Session.get_current_user(conn)
     render conn, "index.html", items: Junkmanagerdb.list_item_names
   end
 
@@ -11,7 +12,7 @@ defmodule JunkmanagerWeb.PageController do
   end
 
   def create(conn,  %{"user"=> %{ "email" => email, "password" => password}}) do
-    user =Doorman.authenticate(email, password)
+    user = Junkmanagerdb.auth_user(email, password)
 
     conn 
     |> valid_user(user)

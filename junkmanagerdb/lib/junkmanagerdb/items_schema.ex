@@ -5,15 +5,17 @@ defmodule Junkmanagerdb.ItemsSchema do
   schema "items" do
     field :name, :string
     field :description, :string
-    field :purchase_price, :decimal
-    field :sale_price
+    field :purchase_price, :float
+    field :sale_price, :float
+    
+    belongs_to :user, Junkmanagerdb.User
 
     timestamps()
   end
 
   def changeset(item, new_values) do
     item 
-    |> cast(new_values, [:name, :description, :purchase_price, :sale_price])
-    |>validate_required([:name, :description])
+    |> cast(new_values, [:name, :description, :user_id, :purchase_price, :sale_price])
+    |> validate_required([:name, :user_id, :description])
   end
 end

@@ -1,0 +1,37 @@
+<div class="row">
+    <section class="col-sm-2"></section>
+    <section class="col-sm-8" >
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> Name </th>
+                    <th> Purchase Price </th>
+                    <th> Sale Price </th>
+                    <th>  </th>
+                </tr>
+            </thead>
+            <tbody>
+                <%= for [ id, name, purchase_price, sale_price ] <- @items do %>
+                <tr>
+                    <td><a href ="<%= item_path(@conn, :show, id) %>"><%= name %></a></td>
+                    <%= case is_nil(purchase_price) do %>
+                    <% false -> %>
+                        <td>$<%= purchase_price %></td>
+                    <% true -> %>
+                        <td> _ </td>
+                    <% end %>
+                    
+                    <%= case is_nil(sale_price) do %>
+                    <% false -> %>
+                        <td>$<%= sale_price %></td>
+                    <% true -> %>
+                        <td> _ </td>
+                    <% end %>
+
+                    <td><a href="<%= item_path(@conn, :edit_item, id) %>">edit</a></td>             
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </section>
+</div>
