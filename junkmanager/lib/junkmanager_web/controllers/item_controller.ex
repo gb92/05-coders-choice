@@ -18,8 +18,15 @@ defmodule JunkmanagerWeb.ItemController do
   def show(conn, %{ "id" => item_id }) do
     %{id: user_id} = Doorman.Login.Session.get_current_user(conn)
 
-    # use a pattern match to block users from seeing items that aren't theirs
-    item = %{user_id: ^user_id} = Junkmanagerdb.find_item(item_id)
+    item = Junkmanagerdb.find_item(item_id, user_id)
+    show_navigate(conn, item)
+  end
+
+  def show_navigate(conn, item) when is_nil(item) do
+    redirect(conn, to: item_path(conn, :item_list))
+  end
+
+  def show_navigate(conn, item) do
     render(conn, "show.html", item: item)
   end
 
@@ -44,18 +51,29 @@ defmodule JunkmanagerWeb.ItemController do
   def edit_item(conn, %{ "id" => item_id}) do
     %{id: user_id} = Doorman.Login.Session.get_current_user(conn)
     
-    # use a pattern match to block users from seeing items that aren't theirs
-    item = %{user_id: ^user_id} = Junkmanagerdb.find_item(item_id)
+    item = Junkmanagerdb.find_item(item_id, user_id)
+    edit_item_navigate(conn, item)
+  end
+
+  def edit_item_navigate(conn, item) when is_nil(item) do
+    redirect(conn, to: item_path(conn, :item_list))
+  end
+
+  def edit_item_navigate(conn, item) do
     render(conn, "update_item.html", item: item)
+  end
+
+  def delete_item(conn, %{ "id" => item_id}) do
+    %{id: user_id} = Doorman.Login.Session.get_current_user(conn)
+
+    Junkmanagerdb.delete_item(item_id, user_id)
+    redirect(conn, to: item_path(conn, :item_list))
   end
 
   def update_item(conn, %{ "id" => item_id, "item" => updates}) do
    %{id: user_id} = Doorman.Login.Session.get_current_user(conn)
-   
-   # use a pattern match to block users from updating items that aren't theirs
-   %{user_id: ^user_id} = Junkmanagerdb.find_item(item_id)
 
-   Junkmanagerdb.update_item(item_id, updates)
+   Junkmanagerdb.update_item(item_id, updates, user_id)
    redirect(conn, to: item_path(conn, :show, item_id))
   end
 end

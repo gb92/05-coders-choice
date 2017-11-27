@@ -40,15 +40,20 @@ defmodule Junkmanagerdb.Impl do
     |> Repo.all
   end
 
-  def find_item(id) do
-    from(item in ItemsSchema, where: [id: ^id])
+  def find_item(id, user_id) do
+    from(item in ItemsSchema, where: [id: ^id, user_id: ^user_id])
     |> Repo.one
   end
 
-  def update_item(id, updates) do
-    find_item(id)
+  def update_item(id, updates, user_id) do
+    find_item(id, user_id)
     |> ItemsSchema.changeset(updates)
     |> Repo.update!
+  end
+  
+  def delete_item(id, user_id) do
+    find_item(id, user_id)
+    |> Junkmanagerdb.Repo.delete
   end
 
   def add_user(username, email, password) do

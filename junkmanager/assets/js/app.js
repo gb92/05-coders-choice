@@ -22,3 +22,24 @@ import "bootstrap"
 // import socket from "./socket"
 
 $().alert();
+
+let ctx = document.getElementById("total_costs");
+var totalCostsChart = new Chart(ctx, {
+    type: 'bar',
+    data ={
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            data: [2, 3, 4]
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+

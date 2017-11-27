@@ -33,6 +33,7 @@ defmodule JunkmanagerWeb.Router do
     get "/", ItemController, :item_list
     get "/edit/:id", ItemController, :edit_item
     post "/edit/:id", ItemController, :update_item
+    get "/:id/delete", ItemController, :delete_item
   end
 
   scope "/user", JunkmanagerWeb do

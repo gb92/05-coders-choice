@@ -7,7 +7,7 @@
                     <th> Name </th>
                     <th> Purchase Price </th>
                     <th> Sale Price </th>
-                    <th>  </th>
+                    <th><a href="<%= item_path(@conn, :item_form) %>">+</a></th>
                 </tr>
             </thead>
             <tbody>
@@ -16,9 +16,15 @@
                     <td><a href ="<%= item_path(@conn, :show, id) %>"><%= name %></a></td>
                     <td><%= get_price_string(purchase_price) %></td>
                     <td><%= get_price_string(sale_price) %></td>
-                    <td><a href="<%= item_path(@conn, :edit_item, id) %>">edit</a></td>             
+                    <td><a href="<%= item_path(@conn, :edit_item, id) %>">edit</a>|<a href="<%= item_path(@conn, :delete_item, id) %>">delete</a></td>             
                 </tr>
                 <% end %>
+                <tr>
+                    <td><a href="<%= item_path(@conn, :item_form) %>">Add Item</a></td>
+                    <td/>
+                    <td/>
+                    <td/>
+                </tr>
             </tbody>
         </table>
     </section>
