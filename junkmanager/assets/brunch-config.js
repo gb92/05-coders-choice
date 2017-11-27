@@ -56,7 +56,7 @@ exports.config = {
       jQuery: 'jquery',
       Popper: 'popper.js',
       bootstrap: 'bootstrap', // require bootstrap' JavaScript globally
-      Chart: 'chart.js'
+      Chart: 'chart.js' // require chart.js for Chart
     }
   }
 };
