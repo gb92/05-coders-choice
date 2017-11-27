@@ -2,7 +2,6 @@ defmodule JunkmanagerWeb.PageController do
   use JunkmanagerWeb, :controller
 
   def index(conn, _params) do
-    # %{id: user_id} = Doorman.Login.Session.get_current_user(conn)
     render conn, "index.html", items: Junkmanagerdb.list_item_names
   end
 
@@ -29,7 +28,7 @@ defmodule JunkmanagerWeb.PageController do
     conn
     |> Doorman.Login.Session.login(user)
     |> put_flash(:info, "Successfully logged in")
-    |> redirect(to: page_path(conn, :index))
+    |> redirect(to: item_path(conn, :dashboard))
   end
 
   def valid_user(conn, _invalid_user) do

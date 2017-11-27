@@ -28,6 +28,7 @@ defmodule JunkmanagerWeb.Router do
     
     get "/new", ItemController, :item_form
     post "/new",    ItemController, :create
+    get "/dashboard", ItemController, :dashboard
     get  "/:id", ItemController, :show
     get "/", ItemController, :item_list
     get "/edit/:id", ItemController, :edit_item

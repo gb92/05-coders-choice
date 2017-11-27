@@ -23,6 +23,13 @@ defmodule JunkmanagerWeb.ItemController do
     render(conn, "show.html", item: item)
   end
 
+  def dashboard(conn, params) do
+    %{id: user_id} = Doorman.Login.Session.get_current_user(conn)
+    items = Junkmanagerdb.list_items_for_user(user_id)
+
+    render(conn, "dashboard.html", items: items)
+  end
+
   def item_form(conn, _params) do 
     render(conn, "new_item.html")
   end

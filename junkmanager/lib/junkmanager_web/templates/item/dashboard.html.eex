@@ -1,0 +1,16 @@
+<div class="row">
+    <section class="col-sm-2"></section>
+    <section class="col-sm-8" >
+        <canvas id="total_costs" width="400" height="400">
+    </section>
+    <section class="col-sm-2"></section>
+</div>
+<script>
+    let ctx = document.getElementById("total_costs");
+    var totalCostsChart = new Chart(ctx, {
+        type: bar,
+        data: {
+            labels: ["Spent", "Recieved", "Profit"] 
+        }
+    })
+</script>

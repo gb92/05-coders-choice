@@ -11,11 +11,11 @@
         </div>
         <div class="form-group">        
             <label for="item_purchase_price"> Purchase Price: </label>
-            <%= number_input form, :purchase_price, class: "form-control", step: "any", value: @item.purchase_price%>
+            <%= number_input form, :purchase_price, class: "form-control", step: "any", value: get_price_formatted(@item.purchase_price)%>
         </div>
         <div class="form-group">        
             <label for="item_sale_price"> Purchase Price: </label>
-            <%= number_input form, :sale_price, class: "form-control", step: "any", value: @item.sale_price%>
+            <%= number_input form, :sale_price, class: "form-control", step: "any", value: get_price_formatted(@item.sale_price) %>
         </div>
         <%= submit "Add Item", class: "btn btn-primary" %>
         <% end) %>
